@@ -8,6 +8,13 @@
 		var arr = [1,2,3];
 		//stringify：把数据转换成字符串
 		alert(JSON.stringify(arr)); //typeof string
+
+		//parse：把字符串转换为对应的对象
+		var str = '[100,200,300]';
+		alert(JSON.parse(str)); //typeof object
+
+		var jos = '{"left":100}';
+		alert(JSON.parse(jos).left);
 	</script>
 </head>
 <body>
