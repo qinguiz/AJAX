@@ -10,13 +10,15 @@
 		}
 		ul{
 			width: 1200px;
-			margin: auto;
+			margin: 0 auto;
 		}
 		img{
-			width: 220px;
+			width: 225px;
 			margin-bottom: 5px;
 		}
 		div{
-			width: 220px;
-			/*border:1px solid black;*/
+			width: 225px;
+			padding: 10px;
+			margin-bottom: 16px;
+			border:1px solid black;
 		}
