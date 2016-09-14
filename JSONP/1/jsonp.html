@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSONP</title>
+	<script>
+		function fn1(data){
+			// alert(data);
+			var oUl1 = document.querySelector("#ul1");
+			var html ="";
+			oUl1.innerHTML = "";
+			for(var i=0;i<data.length;i++){
+				// html += "<li>"+data[i]+"</li>"
+				var oLi = document.createElement("li");
+				var oText = document.createTextNode(data[i]);
+				oLi.appendChild(oText);
+				oUl1.appendChild(oLi);
+			}
+			// oUl1.innerHTML = html;
+		};
+	</script>
+	<script>
+		window.onload = function(){
+			var oBtn1 = document.querySelector("#btn1");
+			oBtn1.onclick = function(){
+				var oScript = document.createElement("script");
+				oScript.src = "getData.php";
+				document.body.appendChild(oScript);
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn1">Button</button>
+	<ul id="ul1"></ul>
+	<button id="btn2">Button</button>
+	<ul id="ul2"></ul>
+	<button id="btn3">Button</button>
+	<ul id="ul3"></ul>
+</body>
+</html>
