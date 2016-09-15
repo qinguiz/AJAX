@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BaiduList</title>
+	<link rel="stylesheet" href="style/index.css">
+	<script>
+		function gz(data){
+			if (data.s.length) {
+				var oUl = document.querySelector("#ul1");
+				oUl.style.display = "block";
+				oUl.innerHTML = "";
+				for(var i=0;i<data.s.length;i++){
+					var oLi = document.createElement("li");
+					var oA = document.createElement("a");
+					var oText = document.createTextNode(data.s[i]);
+					oA.appendChild(oText);
+					oLi.appendChild(oA);
+					oUl.appendChild(oLi);
+				}
+			}
+		}
+		window.onload = function(){
+			var oQ = document.querySelector("#q");
+			var oUl = document.querySelector("#ul1");
+
+			oQ.onkeyup = function(){
+				if (this.value != "") {
+					var oScript = document.createElement("script");
+					oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+ this.value +"&cb=gz"
+					document.body.appendChild(oScript);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="q">
+	<ul id="ul1"></ul>
+</body>
+</html>
