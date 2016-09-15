@@ -18,6 +18,8 @@
 					oLi.appendChild(oA);
 					oUl.appendChild(oLi);
 				}
+			}else{
+				oUl.style.display = "none";
 			}
 		}
 		window.onload = function(){
@@ -29,7 +31,9 @@
 					var oScript = document.createElement("script");
 					oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+ this.value +"&cb=gz"
 					document.body.appendChild(oScript);
-				}
+				}else{
+				oUl.style.display = "none";
+			}
 			}
 		}
 	</script>
