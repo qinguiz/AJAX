@@ -7,7 +7,6 @@
 		function fn1(data){
 			// alert(data);
 			var oUl1 = document.querySelector("#ul1");
-			var html ="";
 			oUl1.innerHTML = "";
 			for(var i=0;i<data.length;i++){
 				// html += "<li>"+data[i]+"</li>"
@@ -16,8 +15,33 @@
 				oLi.appendChild(oText);
 				oUl1.appendChild(oLi);
 			}
-			// oUl1.innerHTML = html;
-		};
+		}
+
+		function fn2(data){
+			// alert(data);
+			var oUl2 = document.querySelector("#ul2");
+			oUl2.innerHTML = "";
+			for(var i=0;i<data.length;i++){
+				// html += "<li>"+data[i]+"</li>"
+				var oLi = document.createElement("li");
+				var oText = document.createTextNode(data[i]);
+				oLi.appendChild(oText);
+				oUl2.appendChild(oLi);
+			}
+		}
+
+		function fn3(data){
+			// alert(data);
+			var oUl3 = document.querySelector("#ul3");
+			oUl3.innerHTML = "";
+			for(var i=0;i<data.length;i++){
+				// html += "<li>"+data[i]+"</li>"
+				var oLi = document.createElement("li");
+				var oText = document.createTextNode(data[i]);
+				oLi.appendChild(oText);
+				oUl3.appendChild(oLi);
+			}
+		}
 	</script>
 	<script>
 		window.onload = function(){
@@ -25,6 +49,20 @@
 			oBtn1.onclick = function(){
 				var oScript = document.createElement("script");
 				oScript.src = "getData.php";
+				document.body.appendChild(oScript);
+			}
+
+			var oBtn2 = document.querySelector("#btn2");
+			oBtn2.onclick = function(){
+				var oScript = document.createElement("script");
+				oScript.src = "getData.php?&t=str&callback=fn2";
+				document.body.appendChild(oScript);
+			}
+
+			var oBtn3 = document.querySelector("#btn3");
+			oBtn3.onclick = function(){
+				var oScript = document.createElement("script");
+				oScript.src = "getData.php?&t=num&callback=fn3";
 				document.body.appendChild(oScript);
 			}
 		}
