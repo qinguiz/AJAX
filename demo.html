@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>员工查询</title>
+	<style>
+		body,input,h1,button,select{
+			font-size: 16px;
+			line-height: 1.7;
+		}
+	</style>
+</head>
+<body>
+	<h1>员工查询</h1>
+	<label>请输入员工编号:</label>
+	<input type="text" id="keyword">
+	<button id="search">查询</button>
+	<p id="searchResult"></p>
+
+	<h1>员工创建</h1>
+	<label>请输入员工姓名:</label>
+	<input type="text" id="staffName"><br>
+	<label>请输入员工编号:</label>
+	<input type="text" id="staffNumber"><br>
+	<label>选择员工的性别:</label>
+	<select id="staffSex">
+		<option value="男">男</option>
+		<option value="女">女</option>
+	</select><br>
+	<label>请输入员工职位:</label>
+	<input type="text" id="staffJob">
+	<button id="save">保存</button>
+	<p id="createResult"></p>
+
+	<script>
+		var oSearch = document.querySelector("#search");
+		var oCreate = document.querySelector("#save");
+		oSearch.onclick = function(){
+			try{
+				var xhr = new XMLHttpRequest();
+			}catch(e){
+				var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			xhr.open("GET","service.php?number="+document.querySelector("#keyword").value,true);
+			xhr.send();
+
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						document.querySelector("#searchResult").innerHTML = xhr.responseText;
+					}else{
+						alert("发生错误："+xhr.status);
+					}
+				}
+			}
+
+		}
+
+
+		oCreate.onclick = function(){
+			try{
+				var xhr = new XMLHttpRequest();
+			}catch(e){
+				var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			xhr.open("POST","service.php",true);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			var data = "name="+document.querySelector("#staffName").value+
+						"&number="+document.querySelector("#staffNumber").value+
+						"&sex="+document.querySelector("#staffSex").value+
+						"&job="+document.querySelector("#staffJob").value;
+			xhr.send(data);
+
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						document.querySelector("#createResult").innerHTML = xhr.responseText;
+					}else{
+						document.querySelector("#createResult").innerHTML = xhr.responseText;
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>
