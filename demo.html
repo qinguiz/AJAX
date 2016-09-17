@@ -48,7 +48,12 @@
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
-						document.querySelector("#searchResult").innerHTML = xhr.responseText;
+						var data = JSON.parse(xhr.responseText);
+						if (data.success) {
+							document.querySelector("#searchResult").innerHTML = data.msg;
+						}else{
+							document.querySelector("#searchResult").innerHTML = "Error" + data.msg;
+						}
 					}else{
 						alert("发生错误："+xhr.status);
 					}
@@ -76,9 +81,15 @@
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
-						document.querySelector("#createResult").innerHTML = xhr.responseText;
+						var data = JSON.parse(xhr.responseText);
+						if (data.success) {
+							document.querySelector("#createResult").innerHTML = data.msg;	
+						}else{
+							document.querySelector("#createResult").innerHTML = "Error" + data.msg;
+						}
+						
 					}else{
-						document.querySelector("#createResult").innerHTML = xhr.responseText;
+						document.querySelector("#createResult").innerHTML = data.msg;
 					}
 				}
 			}
